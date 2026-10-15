@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Prestige Le Parfum</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#121210;
+    --panel:#1a1a17;
+    --panel2:#201f1b;
+    --gold:#c9a24b;
+    --gold-soft:#d9be7f;
+    --gold-line:rgba(201,162,75,0.35);
+    --cream:#f3ede1;
+    --cream-dim:#c9c3b4;
+    --stone:#8f8a7c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--cream);
+    font-family:'Jost',sans-serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{ font-family:'Cormorant Garamond', serif; font-weight:500; letter-spacing:0.01em; }
+  .eyebrow{
+    font-family:'Jost',sans-serif; font-size:11px; letter-spacing:0.35em; text-transform:uppercase;
+    color:var(--gold-soft); font-weight:400;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 40px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(18,18,16,0.92); backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--gold-line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 40px; max-width:1180px; margin:0 auto;
+  }
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand img{height:40px; width:auto; display:block;}
+  .brand-name{font-family:'Cormorant Garamond',serif; font-size:20px; letter-spacing:0.12em; color:var(--cream);}
+  .brand-name span{display:block; font-family:'Jost',sans-serif; font-size:9px; letter-spacing:0.3em; color:var(--gold-soft); margin-top:2px;}
+  .nav-links{display:flex; gap:38px; font-size:13px; letter-spacing:0.08em; text-transform:uppercase;}
+  .nav-links a{color:var(--cream-dim); position:relative; padding-bottom:4px; transition:color .2s; cursor:pointer;}
+  .nav-links a:hover{color:var(--gold-soft);}
+  .nav-icons{display:flex; align-items:center; gap:22px; font-size:14px; color:var(--cream-dim);}
+  .nav-icons a{display:flex; align-items:center; gap:6px; cursor:pointer;}
+  .cart-count{
+    background:var(--gold); color:#141310; font-size:10px; font-weight:500;
+    width:16px; height:16px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-family:'Jost',sans-serif;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; overflow:hidden;
+    padding:120px 40px 100px;
+    background:
+      radial-gradient(ellipse 700px 500px at 82% 18%, rgba(201,162,75,0.10), transparent 60%),
+      linear-gradient(180deg,#141310,#0f0f0d);
+    border-bottom:1px solid var(--gold-line);
+  }
+  .hero-inner{max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center;}
+  .hero-eyebrow{margin-bottom:22px;}
+  .hero h1{font-size:64px; line-height:1.05; color:var(--cream); margin-bottom:24px;}
+  .hero h1 em{font-style:italic; color:var(--gold-soft);}
+  .hero p{font-size:16px; line-height:1.8; color:var(--cream-dim); max-width:440px; margin-bottom:36px; font-weight:300;}
+  .btn-row{display:flex; gap:18px; align-items:center;}
+  .btn{
+    display:inline-block; padding:15px 34px; font-size:12px; letter-spacing:0.18em; text-transform:uppercase;
+    border:1px solid var(--gold); color:#141310; background:var(--gold); transition:all .25s; cursor:pointer;
+  }
+  .btn:hover{background:transparent; color:var(--gold-soft);}
+  .btn-ghost{
+    display:inline-block; padding:15px 30px; font-size:12px; letter-spacing:0.18em; text-transform:uppercase;
+    border:1px solid var(--gold-line); color:var(--cream-dim); transition:all .25s; cursor:pointer;
+  }
+  .btn-ghost:hover{border-color:var(--gold); color:var(--gold-soft);}
+
+  .hero-visual{
+    position:relative; display:flex; align-items:center; justify-content:center;
+    height:460px;
+  }
+  .hero-plate{
+    width:380px; height:380px; border-radius:50%;
+    background:radial-gradient(circle at 40% 30%, #23221d, #131210 72%);
+    border:1px solid var(--gold-line);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .hero-plate::before{
+    content:""; position:absolute; inset:22px; border-radius:50%; border:1px solid rgba(201,162,75,0.18);
+  }
+  .hero-plate img{height:74%; width:auto; filter:drop-shadow(0 18px 30px rgba(0,0,0,0.55));}
+
+  /* ---------- MARQUEE STRIP ---------- */
+  .strip{
+    border-bottom:1px solid var(--gold-line);
+    padding:16px 40px; overflow:hidden; white-space:nowrap;
+    background:var(--panel);
+  }
+  .strip-track{display:inline-flex; gap:60px; font-size:11px; letter-spacing:0.28em; text-transform:uppercase; color:var(--stone);}
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section{padding:100px 40px;}
+  .section-head{display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:50px; border-bottom:1px solid var(--gold-line); padding-bottom:26px;}
+  .section-head h2{font-size:38px; color:var(--cream);}
+  .section-head .view-all{font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold-soft); border-bottom:1px solid var(--gold-line); padding-bottom:4px; cursor:pointer;}
+
+  /* ---------- PRODUCT GRID ---------- */
+  .grid{max-width:1180px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:28px;}
+  .card{
+    background:var(--panel); border:1px solid var(--gold-line);
+    display:flex; flex-direction:column; transition:border-color .25s, transform .25s;
+  }
+  .card:hover{border-color:var(--gold); transform:translateY(-4px);}
+  .card-media{
+    height:220px; display:flex; align-items:center; justify-content:center;
+    background:radial-gradient(ellipse at 50% 30%, #24221c, #17160f 75%);
+    position:relative; border-bottom:1px solid var(--gold-line);
+  }
+  .card-media svg{height:64%; width:auto;}
+  .card-badge{
+    position:absolute; top:12px; left:12px; font-size:9px; letter-spacing:0.2em; text-transform:uppercase;
+    color:#141310; background:var(--gold-soft); padding:4px 9px;
+  }
+  .card-body{padding:20px 20px 24px;}
+  .card-cat{font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--stone); margin-bottom:8px;}
+  .card-name{font-family:'Cormorant Garamond',serif; font-size:21px; color:var(--cream); margin-bottom:6px;}
+  .card-note{font-size:12px; color:var(--cream-dim); margin-bottom:16px; line-height:1.6;}
+  .card-foot{display:flex; align-items:center; justify-content:space-between;}
+  .price{font-family:'Cormorant Garamond',serif; font-size:19px; color:var(--gold-soft);}
+  .add{
+    font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--cream);
+    border:1px solid var(--gold-line); padding:8px 14px; transition:all .2s; cursor:pointer; background:none;
+    font-family:'Jost',sans-serif;
+  }
+  .add:hover{border-color:var(--gold); color:var(--gold-soft);}
+
+  /* ---------- STORY / BLOG SPLIT ---------- */
+  .split{
+    background:var(--panel2); border-top:1px solid var(--gold-line); border-bottom:1px solid var(--gold-line);
+  }
+  .split-inner{max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr;}
+  .split-media{
+    min-height:420px; display:flex; align-items:center; justify-content:center;
+    background:radial-gradient(ellipse at 50% 40%, #26241d, #16150f 75%);
+    border-right:1px solid var(--gold-line);
+  }
+  .split-media svg{height:60%;}
+  .split-text{padding:80px 60px; display:flex; flex-direction:column; justify-content:center;}
+  .split-text h2{font-size:34px; margin:16px 0 20px; color:var(--cream);}
+  .split-text p{font-size:15px; line-height:1.85; color:var(--cream-dim); margin-bottom:28px; max-width:420px; font-weight:300;}
+
+  /* ---------- BLOG ---------- */
+  .blog-grid{max-width:1180px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .post{border:1px solid var(--gold-line); cursor:pointer; transition:border-color .2s;}
+  .post:hover{border-color:var(--gold);}
+  .post-media{height:170px; background:linear-gradient(150deg,#221f18,#151410);}
+  .post-body{padding:22px;}
+  .post-tag{font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:10px;}
+  .post h3{font-size:20px; color:var(--cream); margin-bottom:10px; line-height:1.3;}
+  .post p{font-size:12.5px; color:var(--cream-dim); line-height:1.7;}
+
+  /* ---------- NEWSLETTER ---------- */
+  .news{
+    padding:90px 40px; text-align:center; border-bottom:1px solid var(--gold-line);
+    background:radial-gradient(ellipse 800px 300px at 50% 0%, rgba(201,162,75,0.08), transparent 70%);
+  }
+  .news h2{font-size:34px; margin:16px 0 14px;}
+  .news p{color:var(--cream-dim); font-size:14px; margin-bottom:30px;}
+  .news-form{display:flex; justify-content:center; gap:0; max-width:440px; margin:0 auto;}
+  .news-form input{
+    flex:1; background:transparent; border:1px solid var(--gold-line); border-right:none;
+    padding:15px 18px; color:var(--cream); font-family:'Jost',sans-serif; font-size:13px; outline:none;
+  }
+  .news-form input::placeholder{color:var(--stone);}
+  .news-form button{
+    background:var(--gold); border:1px solid var(--gold); color:#141310; padding:0 26px;
+    font-size:12px; letter-spacing:0.14em; text-transform:uppercase; cursor:pointer;
+  }
+  .news-msg{margin-top:16px; font-size:13px; color:var(--gold-soft); display:none;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:70px 40px 30px; background:#0d0d0b;}
+  .foot-inner{max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; padding-bottom:50px; border-bottom:1px solid var(--gold-line);}
+  .foot-brand img{height:36px; margin-bottom:16px;}
+  .foot-brand p{font-size:12.5px; color:var(--stone); line-height:1.8; max-width:260px;}
+  .foot-col h4{font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:18px; font-weight:400; font-family:'Jost',sans-serif;}
+  .foot-col a{display:block; font-size:13px; color:var(--cream-dim); margin-bottom:12px; cursor:pointer;}
+  .foot-col a:hover{color:var(--gold-soft);}
+  .foot-bottom{max-width:1180px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; padding-top:24px; font-size:11px; color:var(--stone); letter-spacing:0.04em;}
+
+  @media (max-width:980px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-visual{height:300px;}
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .split-inner{grid-template-columns:1fr;}
+    .split-media{border-right:none; border-bottom:1px solid var(--gold-line); min-height:260px;}
+    .blog-grid{grid-template-columns:1fr;}
+    .foot-inner{grid-template-columns:1fr 1fr;}
+    .nav-links{display:none;}
+  }
+
+  /* ---------- MODALS / OVERLAY UI (added) ---------- */
+  .overlay{
+    position:fixed; inset:0; background:rgba(10,10,9,0.72); backdrop-filter:blur(3px);
+    display:none; align-items:center; justify-content:center; z-index:200; padding:20px;
+  }
+  .overlay.open{display:flex;}
+  .modal{
+    background:var(--panel); border:1px solid var(--gold-line); max-width:420px; width:100%;
+    padding:36px 32px; position:relative; max-height:88vh; overflow-y:auto;
+  }
+  .modal-close{
+    position:absolute; top:16px; right:18px; font-size:20px; color:var(--cream-dim); cursor:pointer;
+    line-height:1; background:none; border:none;
+  }
+  .modal-close:hover{color:var(--gold-soft);}
+  .modal h3{font-family:'Cormorant Garamond',serif; font-size:26px; color:var(--cream); margin-bottom:6px;}
+  .modal .sub{font-size:12.5px; color:var(--stone); margin-bottom:24px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--cream-dim); margin-bottom:8px;}
+  .field input{
+    width:100%; background:transparent; border:1px solid var(--gold-line); padding:12px 14px;
+    color:var(--cream); font-family:'Jost',sans-serif; font-size:13px; outline:none;
+  }
+  .field input:focus{border-color:var(--gold);}
+  .modal-msg{font-size:12.5px; color:var(--gold-soft); margin-top:14px; display:none;}
+  .switch-line{font-size:12px; color:var(--stone); margin-top:18px; text-align:center;}
+  .switch-line a{color:var(--gold-soft); cursor:pointer;}
+
+  /* cart drawer */
+  .cart-drawer{
+    position:fixed; top:0; right:0; height:100%; width:100%; max-width:400px;
+    background:var(--panel); border-left:1px solid var(--gold-line); z-index:210;
+    transform:translateX(100%); transition:transform .3s ease; display:flex; flex-direction:column;
+  }
+  .cart-drawer.open{transform:translateX(0);}
+  .cart-head{padding:24px; border-bottom:1px solid var(--gold-line); display:flex; justify-content:space-between; align-items:center;}
+  .cart-head h3{font-family:'Cormorant Garamond',serif; font-size:22px;}
+  .cart-items{flex:1; overflow-y:auto; padding:16px 24px;}
+  .cart-item{display:flex; gap:14px; padding:16px 0; border-bottom:1px solid rgba(201,162,75,0.15);}
+  .cart-item-thumb{width:52px; height:70px; background:radial-gradient(ellipse at 50% 30%, #24221c, #17160f 75%); border:1px solid var(--gold-line); flex-shrink:0;}
+  .cart-item-info{flex:1;}
+  .cart-item-info .name{font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--cream);}
+  .cart-item-info .meta{font-size:11px; color:var(--stone); margin:4px 0 8px;}
+  .qty-row{display:flex; align-items:center; gap:10px; font-size:12px;}
+  .qty-btn{border:1px solid var(--gold-line); width:22px; height:22px; display:flex; align-items:center; justify-content:center; cursor:pointer; background:none; color:var(--cream);}
+  .qty-btn:hover{border-color:var(--gold); color:var(--gold-soft);}
+  .remove-link{font-size:11px; color:var(--stone); text-decoration:underline; cursor:pointer; margin-left:auto;}
+  .remove-link:hover{color:var(--gold-soft);}
+  .cart-empty{padding:60px 20px; text-align:center; color:var(--stone); font-size:13px;}
+  .cart-foot{padding:22px 24px; border-top:1px solid var(--gold-line);}
+  .cart-subtotal{display:flex; justify-content:space-between; font-size:14px; margin-bottom:16px; color:var(--cream);}
+  .toast{
+    position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--gold); color:#141310; padding:13px 26px; font-size:12.5px; letter-spacing:0.04em;
+    z-index:300; opacity:0; pointer-events:none; transition:all .3s ease;
+  }
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+
+<div class="overlay" id="overlaySignin">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('overlaySignin')">&times;</button>
+    <h3>Sign in</h3>
+    <div class="sub">Access your account, orders and wishlist.</div>
+    <form onsubmit="return handleSignin(event)">
+      <div class="field">
+        <label>Email</label>
+        <input type="email" required placeholder="name@email.com" />
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" required placeholder="••••••••" />
+      </div>
+      <button type="submit" class="btn" style="width:100%;">Sign in</button>
+      <div class="modal-msg" id="signinMsg"></div>
+    </form>
+    <div class="switch-line">New here? <a onclick="switchModal('overlaySignin','overlayCreate')">Create an account</a></div>
+  </div>
+</div>
+
+<div class="overlay" id="overlayCreate">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('overlayCreate')">&times;</button>
+    <h3>Create account</h3>
+    <div class="sub">Join to track orders and save your favorites.</div>
+    <form onsubmit="return handleCreateAccount(event)">
+      <div class="field">
+        <label>Full name</label>
+        <input type="text" required placeholder="Jane Doe" />
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" required placeholder="name@email.com" />
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" required placeholder="••••••••" />
+      </div>
+      <button type="submit" class="btn" style="width:100%;">Create account</button>
+      <div class="modal-msg" id="createMsg"></div>
+    </form>
+    <div class="switch-line">Already a member? <a onclick="switchModal('overlayCreate','overlaySignin')">Sign in</a></div>
+  </div>
+</div>
+
+<div class="overlay" id="overlayTracking">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('overlayTracking')">&times;</button>
+    <h3>Track your order</h3>
+    <div class="sub">Enter your order number and email to see the latest status.</div>
+    <form onsubmit="return handleTracking(event)">
+      <div class="field">
+        <label>Order number</label>
+        <input type="text" required placeholder="PLP-000000" />
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" required placeholder="name@email.com" />
+      </div>
+      <button type="submit" class="btn" style="width:100%;">Track order</button>
+      <div class="modal-msg" id="trackingMsg"></div>
+    </form>
+  </div>
+</div>
+
+<div class="overlay" id="overlayInfo">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('overlayInfo')">&times;</button>
+    <h3 id="infoTitle">Notice</h3>
+    <div class="sub" id="infoBody">Content coming soon.</div>
+  </div>
+</div>
+
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-head">
+    <h3>Your bag</h3>
+    <button class="modal-close" style="position:static;" onclick="toggleCart(false)">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItemsWrap">
+    <div class="cart-empty">Your bag is empty.</div>
+  </div>
+  <div class="cart-foot">
+    <div class="cart-subtotal">
+      <span>Subtotal</span>
+      <span id="cartSubtotal">$0</span>
+    </div>
+    <a href="#" class="btn" style="width:100%; text-align:center; display:block;" onclick="handleCheckout(event)">Checkout</a>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<header>
+  <nav>
+    <div class="brand">
+      <img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='47' fill='none' stroke='%23c9a24b' stroke-width='2'/%3E%3Ctext x='50' y='63' font-family='Georgia,serif' font-size='46' fill='%23c9a24b' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E" alt="Prestige Le Parfum" />
+      <div class="brand-name">PRESTIGE<span>LE PARFUM</span></div>
+    </div>
+    <div class="nav-links">
+      <a onclick="scrollToSection('top')">Home</a>
+      <a onclick="scrollToSection('productsSection')">Products</a>
+      <a onclick="scrollToSection('storySection')">Collections</a>
+      <a onclick="scrollToSection('blogSection')">Blog</a>
+      <a onclick="openModal('overlayTracking')">Order Tracking</a>
+    </div>
+    <div class="nav-icons">
+      <a onclick="openModal('overlaySignin')">Sign in</a>
+      <a onclick="toggleCart(true)">Bag <span class="cart-count" id="cartCount">0</span></a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow hero-eyebrow">New Season Collection</div>
+      <h1>Wear a scent<br/>worthy of <em>a crown</em></h1>
+      <p>Rare ingredients, hand-finished bottles, and fragrances composed for those who don't follow trends. Discover the house of Prestige Le Parfum.</p>
+      <div class="btn-row">
+        <a class="btn" onclick="scrollToSection('productsSection')">Shop the collection</a>
+        <a class="btn-ghost" onclick="scrollToSection('storySection')">Our story</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-plate">
+        <img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140'%3E%3Cpath d='M40 30 L60 30 L60 42 L68 48 L68 60 L74 55 L82 58 L82 68 L74 66 L68 62 L68 130 Q68 138 60 138 L40 138 Q32 138 32 130 L32 62 L26 66 L18 68 L18 58 L26 55 L32 60 L32 48 L40 42 Z' fill='none' stroke='%23c9a24b' stroke-width='1.6'/%3E%3Cpath d='M40 62 L50 130 L60 62' stroke='%23c9a24b' stroke-width='1' opacity='0.55'/%3E%3C/svg%3E" alt="Signature bottle" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-track">
+    <span>Complimentary gift wrapping</span>
+    <span>Secure checkout via Stripe</span>
+    <span>Free shipping over $120</span>
+    <span>30-day returns</span>
+    <span>Complimentary gift wrapping</span>
+    <span>Secure checkout via Stripe</span>
+    <span>Free shipping over $120</span>
+    <span>30-day returns</span>
+  </div>
+</div>
+
+<section class="section" id="productsSection">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">Best sellers</div>
+      <h2>Signature edition</h2>
+    </div>
+    <a class="view-all" onclick="showInfo('All products', 'Our full catalog is being finished for this preview — check back soon for the complete range.')">View all products</a>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-media">
+        <span class="card-badge">Best seller</span>
+        <svg viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40 30 L60 30 L60 42 L68 48 L68 60 L74 55 L82 58 L82 68 L74 66 L68 62 L68 130 Q68 138 60 138 L40 138 Q32 138 32 130 L32 62 L26 66 L18 68 L18 58 L26 55 L32 60 L32 48 L40 42 Z" stroke="#c9a24b" stroke-width="1.4"/>
+          <path d="M40 62 L50 130 L60 62" stroke="#c9a24b" stroke-width="1" opacity="0.55"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-cat">Eau de Parfum · 50ml</div>
+        <div class="card-name">Noir Royal</div>
+        <div class="card-note">Amber, oud, black pepper</div>
+        <div class="card-foot">
+          <span class="price">$168</span>
+          <button class="add" onclick="addToCart('Noir Royal', 168)">Add to bag</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-media">
+        <svg viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40 30 L60 30 L60 42 L68 48 L68 60 L74 55 L82 58 L82 68 L74 66 L68 62 L68 130 Q68 138 60 138 L40 138 Q32 138 32 130 L32 62 L26 66 L18 68 L18 58 L26 55 L32 60 L32 48 L40 42 Z" stroke="#c9a24b" stroke-width="1.4"/>
+          <path d="M40 62 L50 130 L60 62" stroke="#c9a24b" stroke-width="1" opacity="0.55"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-cat">Eau de Parfum · 50ml</div>
+        <div class="card-name">Velours d'Or</div>
+        <div class="card-note">Bergamot, iris, sandalwood</div>
+        <div class="card-foot">
+          <span class="price">$154</span>
+          <button class="add" onclick="addToCart(\"Velours d'Or\", 154)">Add to bag</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-media">
+        <span class="card-badge">Limited</span>
+        <svg viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40 30 L60 30 L60 42 L68 48 L68 60 L74 55 L82 58 L82 68 L74 66 L68 62 L68 130 Q68 138 60 138 L40 138 Q32 138 32 130 L32 62 L26 66 L18 68 L18 58 L26 55 L32 60 L32 48 L40 42 Z" stroke="#c9a24b" stroke-width="1.4"/>
+          <path d="M40 62 L50 130 L60 62" stroke="#c9a24b" stroke-width="1" opacity="0.55"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-cat">Eau de Parfum · 50ml</div>
+        <div class="card-name">Ambre Imperial</div>
+        <div class="card-note">Vanilla, cedar, saffron</div>
+        <div class="card-foot">
+          <span class="price">$192</span>
+          <button class="add" onclick="addToCart('Ambre Imperial', 192)">Add to bag</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-media">
+        <svg viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40 30 L60 30 L60 42 L68 48 L68 60 L74 55 L82 58 L82 68 L74 66 L68 62 L68 130 Q68 138 60 138 L40 138 Q32 138 32 130 L32 62 L26 66 L18 68 L18 58 L26 55 L32 60 L32 48 L40 42 Z" stroke="#c9a24b" stroke-width="1.4"/>
+          <path d="M40 62 L50 130 L60 62" stroke="#c9a24b" stroke-width="1" opacity="0.55"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-cat">Eau de Parfum · 50ml</div>
+        <div class="card-name">Soie Blanche</div>
+        <div class="card-note">Jasmine, musk, white tea</div>
+        <div class="card-foot">
+          <span class="price">$146</span>
+          <button class="add" onclick="addToCart('Soie Blanche', 146)">Add to bag</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="split" id="storySection">
+  <div class="split-inner">
+    <div class="split-media">
+      <img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='47' fill='none' stroke='%23c9a24b' stroke-width='2'/%3E%3Ctext x='50' y='63' font-family='Georgia,serif' font-size='46' fill='%23c9a24b' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E" alt="Prestige Le Parfum crest" style="height:52%; width:auto;" />
+    </div>
+    <div class="split-text">
+      <div class="eyebrow">The house</div>
+      <h2>Composed in small<br/>batches, worn for years</h2>
+      <p>Every Prestige Le Parfum fragrance is blended in limited runs and finished by hand, so each bottle that reaches your door carries the same care it left the atelier with.</p>
+      <a class="btn-ghost" style="width:fit-content;" onclick="showInfo('Our story', 'Our full brand story and atelier film are being prepared for this preview — thank you for your patience.')">Discover our story</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="blogSection">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">Journal</div>
+      <h2>From the blog</h2>
+    </div>
+    <a class="view-all" onclick="showInfo('Journal', 'Our full journal archive is coming soon — new stories are published monthly.')">Read the journal</a>
+  </div>
+  <div class="blog-grid">
+    <div class="post" onclick="showInfo('How to choose a signature scent', 'Notes, layering, and longevity — a short guide to finding the fragrance that becomes yours. Full article coming soon.')">
+      <div class="post-media"></div>
+      <div class="post-body">
+        <div class="post-tag">Fragrance guide</div>
+        <h3>How to choose a signature scent</h3>
+        <p>Notes, layering, and longevity — a short guide to finding the fragrance that becomes yours.</p>
+      </div>
+    </div>
+    <div class="post" onclick="showInfo('Inside our atelier in Grasse', 'A look at how each Prestige Le Parfum batch is blended, rested, and bottled by hand. Full article coming soon.')">
+      <div class="post-media"></div>
+      <div class="post-body">
+        <div class="post-tag">Behind the house</div>
+        <h3>Inside our atelier in Grasse</h3>
+        <p>A look at how each Prestige Le Parfum batch is blended, rested, and bottled by hand.</p>
+      </div>
+    </div>
+    <div class="post" onclick="showInfo('The art of gifting fragrance', 'Our edit of scents to give this season, and how to pair them with the right occasion. Full article coming soon.')">
+      <div class="post-media"></div>
+      <div class="post-body">
+        <div class="post-tag">Gifting</div>
+        <h3>The art of gifting fragrance</h3>
+        <p>Our edit of scents to give this season, and how to pair them with the right occasion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="news">
+  <div class="eyebrow">Stay in the house</div>
+  <h2>Join our mailing list</h2>
+  <p>New arrivals, private previews, and notes from the atelier — no more than twice a month.</p>
+  <form class="news-form" onsubmit="return handleNewsletter(event)">
+    <input type="email" id="newsletterEmail" placeholder="name@email.com" required />
+    <button type="submit">Subscribe</button>
+  </form>
+  <div class="news-msg" id="newsletterMsg"></div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='47' fill='none' stroke='%23c9a24b' stroke-width='2'/%3E%3Ctext x='50' y='63' font-family='Georgia,serif' font-size='46' fill='%23c9a24b' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E" alt="Prestige Le Parfum" />
+      <p>A house of fragrance built on rare materials, small batches, and unmistakable presence.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Shop</h4>
+      <a onclick="scrollToSection('productsSection')">All products</a>
+      <a onclick="scrollToSection('productsSection')">Best sellers</a>
+      <a onclick="showInfo('New arrivals', 'New arrivals will be added to this preview as they launch.')">New arrivals</a>
+      <a onclick="showInfo('Gift sets', 'Gift sets are being curated for this preview — check back soon.')">Gift sets</a>
+    </div>
+    <div class="foot-col">
+      <h4>Support</h4>
+      <a onclick="openModal('overlayTracking')">Order tracking</a>
+      <a onclick="showInfo('Shipping and returns', 'Free shipping on orders over $120. Returns are accepted within 30 days of delivery in original condition.')">Shipping and returns</a>
+      <a onclick="showInfo('Contact us', 'Reach us any time at hello@prestigeleparfum.example — we usually reply within one business day.')">Contact us</a>
+      <a onclick="showInfo('FAQ', 'Frequently asked questions are being compiled for this preview.')">FAQ</a>
+    </div>
+    <div class="foot-col">
+      <h4>Account</h4>
+      <a onclick="openModal('overlaySignin')">Sign in</a>
+      <a onclick="openModal('overlayCreate')">Create account</a>
+      <a onclick="showInfo('My orders', 'Sign in to view your order history.')">My orders</a>
+      <a onclick="showInfo('Wishlist', 'Sign in to view and manage your wishlist.')">Wishlist</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>&copy; 2026 Prestige Le Parfum. All rights reserved.</span>
+    <span>Payments secured by Stripe</span>
+  </div>
+</footer>
+
+<script>
+  // ---------------- Cart ----------------
+  var cart = [];
+
+  function addToCart(name, price){
+    var existing = cart.find(function(i){ return i.name === name; });
+    if (existing) { existing.qty += 1; }
+    else { cart.push({ name: name, price: price, qty: 1 }); }
+    renderCart();
+    showToast(name + ' added to your bag');
+  }
+
+  function changeQty(name, delta){
+    var item = cart.find(function(i){ return i.name === name; });
+    if (!item) return;
+    item.qty += delta;
+    if (item.qty <= 0) { cart = cart.filter(function(i){ return i.name !== name; }); }
+    renderCart();
+  }
+
+  function removeFromCart(name){
+    cart = cart.filter(function(i){ return i.name !== name; });
+    renderCart();
+  }
+
+  function renderCart(){
+    var wrap = document.getElementById('cartItemsWrap');
+    var countEl = document.getElementById('cartCount');
+    var subtotalEl = document.getElementById('cartSubtotal');
+
+    var totalQty = cart.reduce(function(sum, i){ return sum + i.qty; }, 0);
+    countEl.textContent = totalQty;
+
+    if (cart.length === 0){
+      wrap.innerHTML = '<div class="cart-empty">Your bag is empty.</div>';
+      subtotalEl.textContent = '$0';
+      return;
+    }
+
+    var html = '';
+    var subtotal = 0;
+    cart.forEach(function(item){
+      subtotal += item.price * item.qty;
+      html += '' +
+        '<div class="cart-item">' +
+          '<div class="cart-item-thumb"></div>' +
+          '<div class="cart-item-info">' +
+            '<div class="name">' + item.name + '</div>' +
+            '<div class="meta">$' + item.price + ' each</div>' +
+            '<div class="qty-row">' +
+              '<button class="qty-btn" onclick="changeQty(\'' + item.name.replace(/'/g,"\\'") + '\', -1)">-</button>' +
+              '<span>' + item.qty + '</span>' +
+              '<button class="qty-btn" onclick="changeQty(\'' + item.name.replace(/'/g,"\\'") + '\', 1)">+</button>' +
+              '<span class="remove-link" onclick="removeFromCart(\'' + item.name.replace(/'/g,"\\'") + '\')">Remove</span>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+    });
+    wrap.innerHTML = html;
+    subtotalEl.textContent = '$' + subtotal;
+  }
+
+  function toggleCart(open){
+    var drawer = document.getElementById('cartDrawer');
+    if (open) drawer.classList.add('open');
+    else drawer.classList.remove('open');
+  }
+
+  function handleCheckout(e){
+    e.preventDefault();
+    if (cart.length === 0){
+      showToast('Your bag is empty');
+      return;
+    }
+    showToast('Checkout is a preview — order not actually placed');
+    cart = [];
+    renderCart();
+    toggleCart(false);
+  }
+
+  // ---------------- Modals ----------------
+  function openModal(id){
+    document.getElementById(id).classList.add('open');
+  }
+  function closeModal(id){
+    document.getElementById(id).classList.remove('open');
+  }
+  function switchModal(fromId, toId){
+    closeModal(fromId);
+    openModal(toId);
+  }
+  function showInfo(title, body){
+    document.getElementById('infoTitle').textContent = title;
+    document.getElementById('infoBody').textContent = body;
+    openModal('overlayInfo');
+  }
+
+  document.querySelectorAll('.overlay').forEach(function(ov){
+    ov.addEventListener('click', function(e){
+      if (e.target === ov) ov.classList.remove('open');
+    });
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape'){
+      document.querySelectorAll('.overlay.open').forEach(function(ov){ ov.classList.remove('open'); });
+      toggleCart(false);
+    }
+  });
+
+  function handleSignin(e){
+    e.preventDefault();
+    var msg = document.getElementById('signinMsg');
+    msg.style.display = 'block';
+    msg.textContent = 'Signed in — welcome back.';
+    setTimeout(function(){ closeModal('overlaySignin'); msg.style.display = 'none'; e.target.reset(); }, 900);
+    return false;
+  }
+
+  function handleCreateAccount(e){
+    e.preventDefault();
+    var msg = document.getElementById('createMsg');
+    msg.style.display = 'block';
+    msg.textContent = 'Account created — welcome to the house.';
+    setTimeout(function(){ closeModal('overlayCreate'); msg.style.display = 'none'; e.target.reset(); }, 900);
+    return false;
+  }
+
+  function handleTracking(e){
+    e.preventDefault();
+    var msg = document.getElementById('trackingMsg');
+    msg.style.display = 'block';
+    msg.textContent = 'This is a preview — order tracking will be connected to live shipping data soon.';
+    return false;
+  }
+
+  // ---------------- Newsletter ----------------
+  function handleNewsletter(e){
+    e.preventDefault();
+    var email = document.getElementById('newsletterEmail').value;
+    var msg = document.getElementById('newsletterMsg');
+    msg.style.display = 'block';
+    msg.textContent = 'Thank you — ' + email + ' has been added to our list.';
+    document.getElementById('newsletterEmail').value = '';
+    return false;
+  }
+
+  // ---------------- Nav scroll ----------------
+  function scrollToSection(id){
+    var el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // ---------------- Toast ----------------
+  var toastTimer;
+  function showToast(text){
+    var toast = document.getElementById('toast');
+    toast.textContent = text;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 2200);
+  }
+</script>
+
+</body>
+</html>
